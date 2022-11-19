@@ -2,7 +2,18 @@ import java.lang.reflect.Array;
 import java.util.Comparator;
 import java.util.Objects;
 
+
 public class Auto implements Comparable<Auto> {
+
+    public static int instances = 0;
+    {
+        instances++;
+    }
+
+    public static int getNumOfInstances(){
+        return instances;
+    }
+
     private String rendszam;
     private int teljesitmeny;
     private boolean automata;
@@ -12,7 +23,6 @@ public class Auto implements Comparable<Auto> {
         this.teljesitmeny = teljesitmeny;
         this.automata = automata;
     }
-
 
     public void checkPlate(){
         int valid = 0;
@@ -86,4 +96,6 @@ public class Auto implements Comparable<Auto> {
             return 1;
          } else return (this.teljesitmeny);
     }
+
+
 }

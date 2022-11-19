@@ -1,5 +1,7 @@
 import javax.swing.plaf.TableHeaderUI;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -7,20 +9,50 @@ public class Main {
     // Auto = (rendszam, loero, valto)
     // Teherauro extends Auto = (rendszam, loero, valto, teherbiras)
 
-    public static void lightWeightBaby(ArrayList<Auto> vList){
+    public static void printList(List<Auto> list){
+        System.out.println("Printed "+ list.getClass().getSimpleName());
+        for(int i=0; i<list.size();i++){
+            System.out.println(list.get(i));
+        }
+        System.out.println();
+    }
+
+    public static List<Auto> lightWeightBaby(List<Auto> vList){
+        List<Auto> collected = new ArrayList<>();
+
         for(int i=0; i<vList.size(); i++){
             if(vList.get(i).getClass().getSimpleName() == "Teherauto"){
 
                 if(vList.get(i).getTeljesitmeny() > 20){ // teherbiras kellene, de nem tudom access-elni
-                    System.out.println(vList.get(i));
+                    // System.out.println(vList.get(i));
+                    collected.add(vList.get(i));
                 }
             }
         }
+        return collected;
+    }
+
+    public static void mostPower(List<Auto> list){
+        int length = list.size();
+        Collections.sort(list);
+        System.out.println(list);
+
+        if(length >= 3){
+            for(int i=0; i<3; i++){
+                System.out.println(list.get(i));
+            }
+        } else {
+            for(int i=0; i<length; i++){
+                System.out.println(list.get(i));
+            }
+        }
+
+        System.out.println();
     }
 
     public static void main(String[] args) {
 
-        ArrayList<Auto> vehicleList= new ArrayList<>();
+        List<Auto> vehicleList= new ArrayList<>();
 
         Auto elso = new Auto("ABC123", 100, true);
         System.out.println(elso);
@@ -28,46 +60,33 @@ public class Main {
         elso.checkPlate();
         System.out.println();
 
-        // Auto = {String, int, boolean}
         Auto a1;
         Auto a2;
+        Auto a3;
         Teherauto t1;
         Teherauto t2;
+        Teherauto t3;
 
-        /*
-        Scanner sc1 = new Scanner(System.in);
-        a1 = new Auto( sc1.nextLine(), sc1.nextInt(), sc1.nextBoolean() );
-        sc1.close();
+        // Scannelés helye
 
-        Scanner sc2 = new Scanner(System.in);
-        a2 = new Auto( sc2.nextLine(), sc2.nextInt(), sc2.nextBoolean() );
-        sc2.close();
-
-        Scanner sc3 = new Scanner(System.in);
-        t1 = new Teherauto(sc3.nextLine(), sc3.nextInt(), sc3.nextBoolean(), sc3.nextInt());
-        sc3.close();
-
-        Scanner sc4 = new Scanner(System.in);
-        t2 = new Teherauto(sc4.nextLine(), sc4.nextInt(), sc4.nextBoolean(), sc4.nextInt());
-        sc4.close();
-        */
-
-        a1 = new Auto("asdsad", 213, false);
-        a2 = new Auto("sadas", 223, true);
-        t1 = new Teherauto("ggg", 12, true, 23);
-        t2 = new Teherauto("sada", 4342, false, 32);
+        a1 = new Auto("SFT385", 233, false);
+        a2 = new Auto("HUS138", 84, true);
+        a3 = new Auto("JZS139", 124, true);
+        t1 = new Teherauto("KLR157", 74, true, 23);
+        t2 = new Teherauto("KDA179", 64, false, 32);
+        t3 = new Teherauto("OJT157", 97, true, 23);
 
         vehicleList.add(a1);
         vehicleList.add(a2);
+        vehicleList.add(a3);
         vehicleList.add(t1);
         vehicleList.add(t2);
+        vehicleList.add(t3);
 
-        lightWeightBaby(vehicleList);
-        /*
-        for(int i=0; i < vehicleList.size(); i++){
-            System.out.println(vehicleList.get(i));
-        }
+        printList(vehicleList);
+        mostPower(vehicleList);
+        // System.out.println(lightWeightBaby(vehicleList));
 
-    */
+        System.out.println(Auto.getNumOfInstances());
     }
 }
