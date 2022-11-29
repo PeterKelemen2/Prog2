@@ -1,0 +1,11 @@
+LocalDate/LocalDateTime/LocalTime
+	.isAfter/.isBefore
+	.of(8,0);
+LocalDateTime.format("YYYY-MM-DD HH-mm")
+
+Random number generator [-60,60] (2 tizedes pontossággal)
+	(stringgé, majd parseDouble)
+
+Setter & Getter protectedre átírni
+
+return LocalDate.now + "_" + LocalTime.now + "_" + ....
