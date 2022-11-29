@@ -6,4 +6,9 @@ public class Pozicio {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "x=" + this.x + ", y=" + this.y;
+    }
 }

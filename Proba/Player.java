@@ -14,7 +14,14 @@ public class Player extends Character implements iPlayer{
         this.hp = hp;
     }
 
-
+    @Override
+    public String toString() {
+        return "Player{" +
+                "pozicio:" + pozicio +
+                ", sebzes=" + sebzes +
+                ", hp=" + hp +
+                "} ";
+    }
 
     @Override
     public boolean isActive() {

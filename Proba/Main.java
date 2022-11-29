@@ -1,5 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -12,6 +15,24 @@ public class Main {
         List<Character> charachterList = new ArrayList<>();
         charachterList.add(player1.clone());
 
-        // Fileból beolvasást megnézni
-    }
+            // Fileból beolvasás
+        try{
+            Scanner scanner = new Scanner(new File("src/player.txt"));
+
+            while(scanner.hasNext()){
+                String s = scanner.nextLine();
+                String[] adatok = s.split(",");
+                charachterList.add(
+                        new Player(Integer.parseInt(adatok[0]),
+                                   Integer.parseInt(adatok[1]),
+                                   Integer.parseInt(adatok[2]),
+                                   Integer.parseInt(adatok[3]))
+                    );
+                }
+            System.out.println(charachterList);
+            }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+            }
+        }
 }
